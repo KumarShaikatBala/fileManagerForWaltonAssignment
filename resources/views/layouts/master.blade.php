@@ -74,7 +74,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
                     <li class="nav-item">
                         <router-link to="/folder" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
+                            <i class="nav-icon fas fa-folder"></i>
                             <p>
                                 Folder
                             </p>
@@ -82,7 +82,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
                     <li class="nav-item">
                         <router-link to="/files" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
+                            <i class="nav-icon fas fa-file"></i>
                             <p>
                                 File
                             </p>

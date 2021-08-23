@@ -2641,73 +2641,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -65097,39 +65030,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-md-3" }, [
-      _c("div", { staticClass: "card card-primary card-outline" }, [
-        _c("div", { staticClass: "card-body box-profile" }, [
-          _c("div", { staticClass: "text-center" }, [
-            _c("img", {
-              staticClass: "profile-user-img img-fluid img-circle",
-              attrs: { src: _vm.getProfilePhoto(), alt: "User profile picture" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("h3", { staticClass: "profile-username text-center" }, [
-            _vm._v("Nina Mcintire")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-muted text-center" }, [
-            _vm._v("Software Engineer")
-          ]),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._m(1)
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-md-9" }, [
+    _c("div", { staticClass: "col-md-12" }, [
       _c("div", { staticClass: "card" }, [
-        _vm._m(2),
+        _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("div", { staticClass: "tab-content" }, [
-            _vm._m(3),
-            _vm._v(" "),
             _c(
               "div",
               { staticClass: "active tab-pane", attrs: { id: "settings" } },
@@ -65410,53 +65316,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "list-group list-group-unbordered mb-3" }, [
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("b", [_vm._v("Followers")]),
-        _vm._v(" "),
-        _c("a", { staticClass: "float-right" }, [_vm._v("1,322")])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("b", [_vm._v("Following")]),
-        _vm._v(" "),
-        _c("a", { staticClass: "float-right" }, [_vm._v("543")])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("b", [_vm._v("Friends")]),
-        _vm._v(" "),
-        _c("a", { staticClass: "float-right" }, [_vm._v("13,287")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "btn btn-primary btn-block", attrs: { href: "#" } },
-      [_c("b", [_vm._v("Follow")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header p-2" }, [
       _c("ul", { staticClass: "nav nav-pills" }, [
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "#activity", "data-toggle": "tab" }
-            },
-            [_vm._v("Activity")]
-          )
-        ]),
-        _vm._v(" "),
         _c("li", { staticClass: "nav-item" }, [
           _c(
             "a",
@@ -65467,70 +65328,6 @@ var staticRenderFns = [
             [_vm._v("Settings")]
           )
         ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: " tab-pane", attrs: { id: "activity" } }, [
-      _c("div", { staticClass: "post" }, [
-        _c("div", { staticClass: "user-block" }, [
-          _c("img", {
-            staticClass: "img-circle img-bordered-sm",
-            attrs: { src: "", alt: "user image" }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "username" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Jonathan Burke Jr.")]),
-            _vm._v(" "),
-            _c(
-              "a",
-              { staticClass: "float-right btn-tool", attrs: { href: "#" } },
-              [_c("i", { staticClass: "fas fa-times" })]
-            )
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "description" }, [
-            _vm._v("Shared publicly - 7:30 PM today")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "\n                                Lorem ipsum represents a long-held tradition for designers,\n                                typographers and the like. Some people hate it and argue for\n                                its demise, but others ignore the hate as they create awesome\n                                tools to help create filler text for everyone from bacon lovers\n                                to Charlie Sheen fans.\n                            "
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c(
-            "a",
-            { staticClass: "link-black text-sm mr-2", attrs: { href: "#" } },
-            [_c("i", { staticClass: "fas fa-share mr-1" }), _vm._v(" Share")]
-          ),
-          _vm._v(" "),
-          _c("a", { staticClass: "link-black text-sm", attrs: { href: "#" } }, [
-            _c("i", { staticClass: "far fa-thumbs-up mr-1" }),
-            _vm._v(" Like")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "float-right" }, [
-            _c(
-              "a",
-              { staticClass: "link-black text-sm", attrs: { href: "#" } },
-              [
-                _c("i", { staticClass: "far fa-comments mr-1" }),
-                _vm._v(" Comments (5)\n                      ")
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text", placeholder: "Type a comment" }
-        })
       ])
     ])
   }
