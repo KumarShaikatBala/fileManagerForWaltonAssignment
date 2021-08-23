@@ -61,7 +61,7 @@
                             <td>{{file.id}}</td>
                             <td>{{file.folder.folder}}</td>
                             <td>
-
+                                <a :href="`file/${file.file}`" class="btn btn-sm btn-info">Download</a>
 
                             </td>
 
@@ -149,7 +149,7 @@ export default {
             this.$Progress.finish();
 
         },
-        edit(account){
+        edit(file){
 
             $('#addNew').modal('show');
 

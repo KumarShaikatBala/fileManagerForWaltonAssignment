@@ -2356,7 +2356,7 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.$Progress.finish();
     },
-    edit: function edit(account) {
+    edit: function edit(file) {
       $('#addNew').modal('show');
       this.editMode = true;
     },
@@ -64687,7 +64687,16 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(file.folder.folder))]),
                   _vm._v(" "),
-                  _c("td")
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-sm btn-info",
+                        attrs: { href: "file/" + file.file }
+                      },
+                      [_vm._v("Download")]
+                    )
+                  ])
                 ])
               }),
               0
@@ -81754,8 +81763,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\XAMPP\htdocs\oisTest-main\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\XAMPP\htdocs\oisTest-main\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\XAMPP\htdocs\file_manager_for_walton_assignment\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\XAMPP\htdocs\file_manager_for_walton_assignment\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
