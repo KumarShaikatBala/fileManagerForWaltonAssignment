@@ -9,13 +9,17 @@ use Illuminate\Http\Request;
 class FileController extends Controller
 {
     public function index(){
-        return File::with('folder')->paginate(5);
+        $files= File::with('folder')->paginate(5);
+        return response()->json(['success' => true,'files' => $files,'message' => 'Retrieved successfully'],200);
+
+
     }
 
 
     public function store(Request $request)
     {
         $this->validate($request,[
+            'folder_id' => 'required',
             'file' => 'required'
         ]);
         try {

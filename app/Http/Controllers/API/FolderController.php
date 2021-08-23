@@ -10,7 +10,7 @@ class FolderController extends Controller
 {
 
     public function index(){
-        return Folder::with('parent')->paginate(5);
+        return Folder::with('parent','children')->paginate(5);
     }
 
     public function store(Request $request)

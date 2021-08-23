@@ -57,7 +57,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="file in files" :key="file.id">
+                        <tr v-for="file in files.data" :key="file.id">
                             <td>{{file.id}}</td>
                             <td>{{file.folder.folder}}</td>
                             <td>
@@ -69,6 +69,9 @@
                         </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="card-footer">
+                    <pagination :data="files" @pagination-change-page="getResults"></pagination>
                 </div>
             </div>
         </div>
@@ -96,12 +99,19 @@ export default {
                 })
             this.$Progress.finish();
         },
-
+        getResults(page = 1) {
+            axios.get('/api/file/index?page=' + page)
+                .then(({data})=>(this.files=data.files))
+                .catch(()=>{
+                    this.$Progress.fail();
+                })
+            this.$Progress.finish();
+        },
 
         loadFiles(){
             this.$Progress.start();
             axios.get('/api/file/index')
-                .then(({data})=>(this.files=data.data))
+                .then(({data})=>(this.files=data.files))
                 .catch(()=>{
                     this.$Progress.fail();
                 })
@@ -127,7 +137,7 @@ export default {
             axios.post('/api/file/store', data, config)
                 .then(() => {
                     Fire.$emit('afterCreate');
-                    $('#exampleModal').modal('hide');
+                    $('#addNew').modal('hide');
                     this.folder_id = "";
                     this.file = "";
                     this.confidential = "";

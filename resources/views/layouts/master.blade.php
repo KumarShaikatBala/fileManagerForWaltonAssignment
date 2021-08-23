@@ -68,7 +68,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <router-link to="/dashboard" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
-                                Dashboard
+                                Directory Tree
                             </p>
                         </router-link>
                     </li>
@@ -137,10 +137,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <footer class="main-footer">
         <!-- To the right -->
         <div class="float-right d-none d-sm-inline">
-            Anything you want
+        CV Number :52735
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 20121-2019 <a href="https://www.linkedin.com/in/shaikat-tomal/">Kumar Shaikat Bala</a>.</strong> All rights reserved.
     </footer>
 </div>
 <!-- ./wrapper -->

@@ -32,6 +32,12 @@ import { Form, HasError, AlertError } from 'vform'
 
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
+
+
+Vue.component('pagination', require('laravel-vue-pagination'));
+
+
+
 /*Moment js for Date time Format:*/
 import moment from 'moment';
 Vue.filter('myDate',function (created) {
