@@ -10,18 +10,24 @@ class FolderController extends Controller
 {
 
     public function index(){
-        return Folder::paginate(5);
+        return Folder::with('parent')->paginate(5);
     }
-
 
     public function store(Request $request)
     {
         $this->validate($request,[
             'folder' =>'required',
         ]);
-         Folder::create([
-            'folder' => $request['folder'],
-        ]);
+        try {
+            Folder::create([
+                'folder' => $request['folder'],
+                'parent_id' => $request['parent_id'],
+            ]);
+            return response()->json(['success'=>'You have successfully Save'],200);
+        }
+        catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()],400);
+        }
     }
     public function update(Request $request, $id)
     {

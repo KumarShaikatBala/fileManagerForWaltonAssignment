@@ -24,8 +24,15 @@
                                                     <input v-model="form.folder" type="text" name="folder"
                                                            class="form-control" :class="{ 'is-invalid': form.errors.has('folder') }">
                                                     <has-error :form="form" field="folder"></has-error>
-
-
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label  class="col-sm-3 col-form-label">Parent Folder</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="form-control" v-model="form.parent_id" name="parent_id">
+                                                            <option value="" disabled selected>Select</option>
+                                                            <option  v-for="item in folders" :key="item.id" :value="item.id">{{item.folder}}</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -46,6 +53,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Folder Name</th>
+                            <th>Parent Folder Name</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -53,6 +61,7 @@
                         <tr v-for="folder in folders" :key="folder.id">
                             <td>{{folder.id}}</td>
                             <td>{{folder.folder}}</td>
+                            <td><span v-if="folder.parent">{{folder.parent.folder}}</span></td>
                             <td>
                                 <a href="javascript:void(0)" @click="deleteFolder(folder.id)"><i class="fa fa-trash"></i></a>
                                 <a href="javascript:void(0)" @click="edit(folder)"><i class="fa fa-edit"></i></a>
@@ -77,6 +86,7 @@ export default {
             form: new Form({
                 id: '',
                 folder: '',
+                parent_id: '',
             })
 
         }

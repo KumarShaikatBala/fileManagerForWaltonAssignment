@@ -2453,6 +2453,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "FolderComponent",
   data: function data() {
@@ -2461,7 +2470,8 @@ __webpack_require__.r(__webpack_exports__);
       folders: {},
       form: new Form({
         id: '',
-        folder: ''
+        folder: '',
+        parent_id: ''
       })
     };
   },
@@ -64864,7 +64874,83 @@ var render = function() {
                                     })
                                   ],
                                   1
-                                )
+                                ),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "form-group row" }, [
+                                  _c(
+                                    "label",
+                                    { staticClass: "col-sm-3 col-form-label" },
+                                    [_vm._v("Parent Folder")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col-sm-9" }, [
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.form.parent_id,
+                                            expression: "form.parent_id"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        attrs: { name: "parent_id" },
+                                        on: {
+                                          change: function($event) {
+                                            var $$selectedVal = Array.prototype.filter
+                                              .call(
+                                                $event.target.options,
+                                                function(o) {
+                                                  return o.selected
+                                                }
+                                              )
+                                              .map(function(o) {
+                                                var val =
+                                                  "_value" in o
+                                                    ? o._value
+                                                    : o.value
+                                                return val
+                                              })
+                                            _vm.$set(
+                                              _vm.form,
+                                              "parent_id",
+                                              $event.target.multiple
+                                                ? $$selectedVal
+                                                : $$selectedVal[0]
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "option",
+                                          {
+                                            attrs: {
+                                              value: "",
+                                              disabled: "",
+                                              selected: ""
+                                            }
+                                          },
+                                          [_vm._v("Select")]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(_vm.folders, function(item) {
+                                          return _c(
+                                            "option",
+                                            {
+                                              key: item.id,
+                                              domProps: { value: item.id }
+                                            },
+                                            [_vm._v(_vm._s(item.folder))]
+                                          )
+                                        })
+                                      ],
+                                      2
+                                    )
+                                  ])
+                                ])
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "modal-footer" }, [
@@ -64939,6 +65025,12 @@ var render = function() {
                   _c("td", [_vm._v(_vm._s(folder.folder))]),
                   _vm._v(" "),
                   _c("td", [
+                    folder.parent
+                      ? _c("span", [_vm._v(_vm._s(folder.parent.folder))])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
                     _c(
                       "a",
                       {
@@ -65002,6 +65094,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("ID")]),
         _vm._v(" "),
         _c("th", [_vm._v("Folder Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Parent Folder Name")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")])
       ])
