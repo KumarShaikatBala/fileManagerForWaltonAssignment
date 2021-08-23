@@ -2500,6 +2500,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "FolderComponent",
   data: function data() {
@@ -2520,9 +2524,21 @@ __webpack_require__.r(__webpack_exports__);
       this.$Progress.start();
       axios.get('/api/folder/index').then(function (_ref) {
         var data = _ref.data;
-        return _this.folders = data.data;
+        return _this.folders = data.folders;
       })["catch"](function () {
         _this.$Progress.fail();
+      });
+      this.$Progress.finish();
+    },
+    getResults: function getResults() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/api/folder/index?page=' + page).then(function (_ref2) {
+        var data = _ref2.data;
+        return _this2.folders = data.folders;
+      })["catch"](function () {
+        _this2.$Progress.fail();
       });
       this.$Progress.finish();
     },
@@ -2532,7 +2548,7 @@ __webpack_require__.r(__webpack_exports__);
       this.editMode = false;
     },
     create: function create() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.$Progress.start();
       this.form.post('api/folder/store').then(function () {
@@ -2543,7 +2559,7 @@ __webpack_require__.r(__webpack_exports__);
           title: 'successfully Added'
         });
       })["catch"](function () {
-        _this2.$Progress.fail();
+        _this3.$Progress.fail();
       });
       this.$Progress.finish();
     },
@@ -2554,7 +2570,7 @@ __webpack_require__.r(__webpack_exports__);
       this.editMode = true;
     },
     update: function update() {
-      var _this3 = this;
+      var _this4 = this;
 
       this.$Progress.start();
       this.form.put('/api/folder/' + this.form.id).then(function () {
@@ -2562,12 +2578,12 @@ __webpack_require__.r(__webpack_exports__);
         $('#addNew').modal('hide');
         Swal.fire('Updated!', 'Your Folder has been Updated.', 'success');
       })["catch"](function () {
-        _this3.$Progress.fail();
+        _this4.$Progress.fail();
       });
       this.$Progress.finish();
     },
     deleteFolder: function deleteFolder(id) {
-      var _this4 = this;
+      var _this5 = this;
 
       Swal.fire({
         title: 'Are you sure?',
@@ -2579,26 +2595,26 @@ __webpack_require__.r(__webpack_exports__);
         confirmButtonText: 'Yes, delete it!'
       }).then(function (result) {
         if (result.value) {
-          _this4.form["delete"]('/api/folder/' + id).then(function () {
-            _this4.$Progress.start();
+          _this5.form["delete"]('/api/folder/' + id).then(function () {
+            _this5.$Progress.start();
 
             Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
             Fire.$emit('afterCreate');
 
-            _this4.$Progress.finish();
+            _this5.$Progress.finish();
           })["catch"](function () {
-            _this4.$Progress.fail();
+            _this5.$Progress.fail();
           });
         }
       });
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this6 = this;
 
     this.loadFolders();
     Fire.$on('afterCreate', function () {
-      _this5.loadFolders();
+      _this6.loadFolders();
     });
   }
 });
@@ -65592,7 +65608,9 @@ var render = function() {
                                           [_vm._v("Select")]
                                         ),
                                         _vm._v(" "),
-                                        _vm._l(_vm.folders, function(item) {
+                                        _vm._l(_vm.folders.data, function(
+                                          item
+                                        ) {
                                           return _c(
                                             "option",
                                             {
@@ -65674,7 +65692,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "tbody",
-              _vm._l(_vm.folders, function(folder) {
+              _vm._l(_vm.folders.data, function(folder) {
                 return _c("tr", { key: folder.id }, [
                   _c("td", [_vm._v(_vm._s(folder.id))]),
                   _vm._v(" "),
@@ -65718,7 +65736,19 @@ var render = function() {
               0
             )
           ])
-        ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "card-footer" },
+          [
+            _c("pagination", {
+              attrs: { data: _vm.folders },
+              on: { "pagination-change-page": _vm.getResults }
+            })
+          ],
+          1
+        )
       ])
     ])
   ])

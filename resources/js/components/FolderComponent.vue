@@ -30,7 +30,7 @@
                                                     <div class="col-sm-9">
                                                         <select class="form-control" v-model="form.parent_id" name="parent_id">
                                                             <option value="" disabled selected>Select</option>
-                                                            <option  v-for="item in folders" :key="item.id" :value="item.id">{{item.folder}}</option>
+                                                            <option  v-for="item in folders.data" :key="item.id" :value="item.id">{{item.folder}}</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -58,7 +58,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="folder in folders" :key="folder.id">
+                        <tr v-for="folder in folders.data" :key="folder.id">
                             <td>{{folder.id}}</td>
                             <td>{{folder.folder}}</td>
                             <td><span v-if="folder.parent">{{folder.parent.folder}}</span></td>
@@ -70,6 +70,10 @@
                         </tr>
                         </tbody>
                     </table>
+                </div>
+
+                <div class="card-footer">
+                    <pagination :data="folders" @pagination-change-page="getResults"></pagination>
                 </div>
             </div>
         </div>
@@ -95,12 +99,24 @@ export default {
         loadFolders(){
             this.$Progress.start();
             axios.get('/api/folder/index')
-            .then(({data})=>(this.folders=data.data))
+            .then(({data})=>(this.folders=data.folders))
         .catch(()=>{
                 this.$Progress.fail();
             })
             this.$Progress.finish();
         },
+
+        getResults(page = 1) {
+            axios.get('/api/folder/index?page=' + page)
+                .then(({data})=>(this.folders=data.folders))
+                .catch(()=>{
+                    this.$Progress.fail();
+                })
+            this.$Progress.finish();
+        },
+
+
+
         addModal(){
             this.form.reset();
             $('#addNew').modal('show');
