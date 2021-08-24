@@ -2194,6 +2194,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2208,9 +2211,21 @@ __webpack_require__.r(__webpack_exports__);
       this.$Progress.start();
       axios.get('/api/folder/index').then(function (_ref) {
         var data = _ref.data;
-        return _this.folders = data.data;
+        return _this.folders = data.folders;
       })["catch"](function () {
         _this.$Progress.fail();
+      });
+      this.$Progress.finish();
+    },
+    getResults: function getResults() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/api/folder/index?page=' + page).then(function (_ref2) {
+        var data = _ref2.data;
+        return _this2.folders = data.folders;
+      })["catch"](function () {
+        _this2.$Progress.fail();
       });
       this.$Progress.finish();
     }
@@ -65053,7 +65068,7 @@ var render = function() {
           _c(
             "div",
             { staticClass: "card-body" },
-            _vm._l(_vm.folders, function(folder) {
+            _vm._l(_vm.folders.data, function(folder) {
               return _c(
                 "ul",
                 { key: folder.id },
@@ -65074,6 +65089,18 @@ var render = function() {
               )
             }),
             0
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-footer" },
+            [
+              _c("pagination", {
+                attrs: { data: _vm.folders },
+                on: { "pagination-change-page": _vm.getResults }
+              })
+            ],
+            1
           )
         ])
       ])
